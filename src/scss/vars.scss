@@ -1,17 +1,48 @@
 @use 'sass:map';
 
+$hblack1: #212529;
+$hblack2: #343a40;
+$hblack3: #454d55;
+
+$hgold1: #e69c24;
+$hgold2: #f0b822;
+$hgold3: #f0b822;
+
+$hturquoise1: #d2f5ff;
+$hturquoise2: #c2f0ff;
+$hturquoise3: #b2e8ff;
+
+$hwhite1: #f2faff;
+$hwhite2: #e6e6e6;
+$hwhite3: #cccccc;
+
 $hpurple: #7a0fff;
 $hblue: #46bdf4;
 
-$hgra1: linear-gradient(90deg, $hpurple 0%, $hblue 100%);
-
 $hcolors: (
+    hblack1: $hblack1,
+    hblack2: $hblack2,
+    hblack3: $hblack3,
+    hgold1: $hgold1,
+    hgold2: $hgold2,
+    hgold3: $hgold3,
+    hturquoise1: $hturquoise1,
+    hturquoise2: $hturquoise2,
+    hturquoise3: $hturquoise3,
+    hwhite1: $hwhite1,
+    hwhite2: $hwhite2,
+    hwhite3: $hwhite3,
     hpurple: $hpurple,
     hblue: $hblue,
 );
+
+$hgra1: linear-gradient(90deg, $hpurple 0%, $hblue 100%);
 
 $hgras: (
     hgra1: $hgra1,
 );
 
+/* *~~*~~*~~*~~*~~* BULMA VARS *~~*~~*~~*~~*~~* */
+
+$navbar-height: 6rem;
 $z-index-glasspanel: 100;
