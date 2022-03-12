@@ -4,6 +4,15 @@
     a {
         padding-left: 2rem;
         padding-right: 2rem;
+        color: $hwhite1;
+
+        &:active {
+            color: $hgold1;
+        }
+
+        &:hover {
+            color: $hgold1;
+        }
     }
 }
 

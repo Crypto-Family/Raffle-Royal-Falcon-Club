@@ -1,6 +1,8 @@
 module.exports = {
     reactStrictMode: true,
-    env: {},
+    env: {
+        FONT_AWESOME_KEY: '8d70729523',
+    },
     async redirects() {
         return [
             {

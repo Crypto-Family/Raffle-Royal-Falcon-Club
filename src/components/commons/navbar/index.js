@@ -7,7 +7,7 @@ import Link from 'next/link';
 // import { useDispatch, useStore } from 'react-redux';
 import mainLogo from 'src/media/logos/royal-falcon.png';
 
-const getAddressReduced = (address) => `${address.slice(0, 6)}...${address.slice(-6)}`;
+const getAddressReduced = (address) => `${address.slice(0, 5)}...${address.slice(-5)}`;
 
 const Navbar = () => {
     // celeste redux
