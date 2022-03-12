@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import brandLogo from 'src/media/logos/royal-falcon.png';
 
-const BeforeRaffle = () => {
+const NoRaffle = () => {
     return (
         <section className="hero has-background-hblack1 has-font-bioRhyme">
             <div className="hero-body">
@@ -25,4 +25,4 @@ const BeforeRaffle = () => {
     );
 };
 
-export default BeforeRaffle;
+export default NoRaffle;
