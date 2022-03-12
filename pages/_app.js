@@ -11,7 +11,7 @@ import { custom_notification_types } from 'src/static/notifications';
 
 import 'src/scss/main.scss';
 import 'src/components/commons/navbar/navbar.scss';
-import 'pages/history/table.scss';
+import 'pages/history/table/table.scss';
 
 const CelesteProvider = dynamic(() => import('src/components/celeste'), { ssr: false });
 
