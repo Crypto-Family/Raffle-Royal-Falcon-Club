@@ -1,10 +1,7 @@
 import { ConnectedWrapper, DisconnectButton, ConnectButton } from 'celeste-framework';
-
-import Image from 'next/image';
-import MainLayout from 'src/layouts/main';
-import brandLogo from 'src/media/logos/royal-falcon.png';
-import Footer from '@/components/commons/footer';
 import Table from 'pages/history/table';
+// import MainLayout from 'src/layouts/main';
+import Footer from 'src/components/commons/footer';
 
 const DuringRaffle = () => {
     return (
