@@ -17,15 +17,26 @@ const History = () => {
                                         Previous Raffles
                                     </h1>
                                     <div className="field has-addons has-font-bioRhyme is-justify-content-center pb-6">
-                                        <div className="control">
-                                            <div className="select is-fullwidth">
-                                                <select>
+                                        <div className="control is-expanded has-icons-left">
+                                            <span className="select is-fullwidth">
+                                                <select className="has-font-bioRhyme">
                                                     <option disabled>Select Raffle</option>
                                                     <option>Raffle 1</option>
                                                     <option>Raffle 2</option>
                                                     <option>Raffle 3</option>
                                                 </select>
-                                            </div>
+                                            </span>
+                                            <span className="icon is-small is-left">
+                                                <i className="fa-solid fa-rectangle-history-circle-user has-text-hblack1" />
+                                            </span>
+                                        </div>
+                                        <div className="control">
+                                            <button
+                                                type="submit"
+                                                className="button is-primary has-background-hgold1 has-text-hblack1 has-font-bioRhyme"
+                                            >
+                                                Choose
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

@@ -128,7 +128,7 @@ const HistoryTable = () => {
                         </figure>
                         <p className="has-text-weight-normal has-text-hwhite1 has-font-bioRhyme">0x3278...cb7dd</p>
                     </td>
-                </tr>{' '}
+                </tr>
                 <tr>
                     <td className="has-text-centered ">
                         <figure className="image has-text-centered">

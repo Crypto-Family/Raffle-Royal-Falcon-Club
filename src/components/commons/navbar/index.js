@@ -66,7 +66,7 @@ const Navbar = () => {
                         >
                             <div className="navbar-item has-font-bioRhyme has-text-hwhite1 ">
                                 <div className="columns">
-                                    <div className="is-flex is-flex-direction-column is-justify-content-center  ">
+                                    <div className="is-flex is-flex-direction-column is-justify-content-center pt-1">
                                         <figure className="image">
                                             <Image
                                                 className="is-rounded"
