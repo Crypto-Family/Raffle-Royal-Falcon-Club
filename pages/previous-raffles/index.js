@@ -1,5 +1,5 @@
 import MainLayout from 'src/layouts/main';
-import Table from 'pages/history/table';
+import HistoryTable from 'src/components/tables/history-table';
 
 const History = () => {
     return (
@@ -16,11 +16,23 @@ const History = () => {
                                     >
                                         Previous Raffles
                                     </h1>
+                                    <div className="field has-addons has-font-bioRhyme is-justify-content-center pb-6">
+                                        <div className="control">
+                                            <div className="select is-fullwidth">
+                                                <select>
+                                                    <option disabled>Select Raffle</option>
+                                                    <option>Raffle 1</option>
+                                                    <option>Raffle 2</option>
+                                                    <option>Raffle 3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <Table />
+                    <HistoryTable />
                 </div>
             </section>
         </MainLayout>

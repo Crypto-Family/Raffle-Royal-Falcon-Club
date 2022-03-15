@@ -6,11 +6,10 @@
         padding-right: 2rem;
         color: $hwhite1;
 
-        &:active {
+        &:hover {
             color: $hgold1;
         }
-
-        &:hover {
+        &.active {
             color: $hgold1;
         }
     }
@@ -53,4 +52,23 @@
     .desktop {
         display: none;
     }
+}
+
+.navbar-burger {
+    @media (min-width: 1024px) {
+        display: none;
+    }
+    border: 1px solid $hgold1;
+    border-radius: 15px;
+    //reduce the size of the burger
+
+    width: 56px;
+    height: 56px;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    border-bottom: 1px solid $hwhite1;
 }

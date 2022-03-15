@@ -1,7 +1,8 @@
-import { ConnectedWrapper, DisconnectButton, ConnectButton } from 'celeste-framework';
-import Table from 'pages/history/table';
+import { ConnectedWrapper, ConnectButton } from 'celeste-framework';
+import RaffleTable from 'src/components/tables/raffle-table';
+import Image from 'next/image';
+import nft from 'src/media/logos/YoussefNFT.png';
 // import MainLayout from 'src/layouts/main';
-import Footer from 'src/components/commons/footer';
 
 const DuringRaffle = () => {
     return (
@@ -18,10 +19,18 @@ const DuringRaffle = () => {
                                     Registration ends in a day
                                 </h2>
                             </div>
+                            <div className="content has-text-centered pt-5">
+                                <h1 className="title has-text-hwhite1 has-font-playfairDisplay pb-5 is-size-1">
+                                    Ferary Win
+                                </h1>
+                                <figure className="image has-text-centered">
+                                    <Image className="is-rounded" src={nft} alt="Ferary NFT" width={256} height={256} />
+                                </figure>
+                            </div>
                         </div>
                     </div>
                     <div className="columns is-centered">
-                        <div className="column is-narrow">
+                        <div className="column is-narrow has-text-centered">
                             <ConnectedWrapper
                                 disconnectedComponent={
                                     <ConnectButton className="button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
@@ -29,22 +38,12 @@ const DuringRaffle = () => {
                                         Connect & Join Raffle
                                     </ConnectButton>
                                 }
-                            >
-                                <DisconnectButton className="button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
-                                    <span className="icon is-small">
-                                        <i className="fa-solid fa-sailboat" />
-                                    </span>
-                                    <span>Buy NFT</span>
-                                </DisconnectButton>
-                            </ConnectedWrapper>
+                            />
                         </div>
-                    </div>
-                    <div className="mt-6">
-                        <Footer />
                     </div>
                 </div>
                 <div className="mt-6">
-                    <Table />
+                    <RaffleTable />
                 </div>
             </div>
         </section>

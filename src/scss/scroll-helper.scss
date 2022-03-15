@@ -8,18 +8,16 @@
 
 /* Track */
 .coolscroll::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.8);
-    
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Handle */
 .coolscroll::-webkit-scrollbar-thumb {
-    background: linear-gradient(0deg, $hblue 0%, $hpurple 100%);
+    background: linear-gradient(0deg, $hwhite1 0%, $hgold1 100%);
     border-radius: 10px;
-  
 }
 
 /* Handle on hover */
 .coolscroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(rgba(255,255,255,0.2), 0.6);
+    background: linear-gradient(0deg, $hgold1 0%, $hblack1 100%);
 }

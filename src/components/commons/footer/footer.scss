@@ -1,0 +1,16 @@
+@import 'src/scss/vars.scss';
+
+// make icons on hover orange
+a {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: $hwhite1;
+
+    &:active {
+        color: $hgold1;
+    }
+
+    &:hover {
+        color: $hgold1;
+    }
+}
