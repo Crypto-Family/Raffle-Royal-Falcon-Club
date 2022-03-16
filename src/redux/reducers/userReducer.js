@@ -12,6 +12,8 @@ const defaultRequest = {
 
 const defaultState = {
     userPFP: { ...defaultRequest },
+    joinProject: { ...defaultRequest },
+    participatingUsers: { ...defaultRequest },
 };
 
 const reducer = (state = defaultState, action) => {
