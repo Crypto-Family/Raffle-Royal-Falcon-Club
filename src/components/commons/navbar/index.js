@@ -1,18 +1,22 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ConnectedWrapper, ConnectButton, DisconnectButton, useCelesteSelector } from 'celeste-framework';
 import Image from 'next/image';
 import Link from 'next/link';
 import mainLogo from 'src/media/logos/royal-falcon.png';
-import nft from 'src/media/logos/YoussefNFT.png';
+import placeholder from 'src/media/placeholder/placeholder.png';
 import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import user_get_request_thunk from 'src/redux/actions/userAction';
 
 const getAddressReduced = (address) => `${address.slice(0, 5)}...${address.slice(-5)}`;
 
 const Navbar = () => {
     // celeste redux
     const { walletReducer } = useCelesteSelector((state) => state);
+    const { userReducer } = useSelector((state) => state);
+    const dispatch = useDispatch();
 
     // local state
     const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +27,18 @@ const Navbar = () => {
         setIsOpen(!isOpen);
     };
 
+    useEffect(() => {
+        if (walletReducer.isLoggedIn) {
+            dispatch(
+                user_get_request_thunk({
+                    requestName: 'userPFP',
+                    params: {
+                        userAddress: walletReducer.address,
+                    },
+                })
+            );
+        }
+    }, [dispatch, walletReducer.address, walletReducer.isConnected]);
     return (
         <section className="hero has-background-hblack1 ">
             <div className="hero-head">
@@ -68,13 +84,23 @@ const Navbar = () => {
                                 <div className="columns">
                                     <div className="is-flex is-flex-direction-column is-justify-content-center pt-1">
                                         <figure className="image">
-                                            <Image
-                                                className="is-rounded"
-                                                src={nft}
-                                                alt="avatar"
-                                                width={30}
-                                                height={30}
-                                            />
+                                            {userReducer.data && userReducer.data.success ? (
+                                                <Image
+                                                    className="is-rounded"
+                                                    src={userReducer.data.img}
+                                                    alt=""
+                                                    width={32}
+                                                    height={32}
+                                                />
+                                            ) : (
+                                                <Image
+                                                    src={placeholder}
+                                                    alt=""
+                                                    className="is-rounded"
+                                                    width={32}
+                                                    height={32}
+                                                />
+                                            )}
                                         </figure>
                                     </div>
                                     <div className="column is-size-6 ">
