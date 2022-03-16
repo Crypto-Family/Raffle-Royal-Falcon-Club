@@ -5,7 +5,8 @@ module.exports = {
         ENDPOINT: 'http://193.176.87.163:8080',
     },
     images: {
-        domain: ['https://meebits.larvalabs.com/'],
+        // TODO: Try to find the domain corresponding to fetch the image from the server
+        domain: ['http://meebits.larvalabs.com'],
     },
     async redirects() {
         return [

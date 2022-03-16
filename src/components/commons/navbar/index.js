@@ -83,14 +83,12 @@ const Navbar = () => {
                             <div className="navbar-item has-font-bioRhyme has-text-hwhite1 ">
                                 <div className="columns">
                                     <div className="is-flex is-flex-direction-column is-justify-content-center pt-1">
-                                        <figure className="image">
-                                            {userReducer.data && userReducer.data.success ? (
-                                                <Image
-                                                    className="is-rounded"
-                                                    src={userReducer.data.img}
+                                        <figure className="image is-32x32">
+                                            {userReducer.userPFP.success ? (
+                                                <img
+                                                    className="is-rounded "
+                                                    src={userReducer.userPFP.data.image}
                                                     alt=""
-                                                    width={32}
-                                                    height={32}
                                                 />
                                             ) : (
                                                 <Image
