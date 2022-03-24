@@ -13,6 +13,11 @@ import 'src/scss/main.scss';
 import 'src/components/commons/navbar/navbar.scss';
 import 'src/components/tables/table.scss';
 import 'src/components/commons/footer/footer.scss';
+import 'src/components/loader/loader.scss';
+import 'react-notifications-component/dist/theme.css';
+import 'src/components/commons/modal/show-winner/modal.scss';
+import MainLayout from 'src/layouts/main';
+import ShowWinner from 'src/components/commons/modal/show-winner';
 
 const CelesteProvider = dynamic(() => import('src/components/celeste'), { ssr: false });
 
@@ -27,9 +32,13 @@ function MyApp({ Component, pageProps }) {
                 </Head>
 
                 <ReactNotification types={custom_notification_types} />
-
-                <Component {...pageProps} />
                 <Script src={`https://kit.fontawesome.com/${fontAwesomeKey}.js`} />
+
+                <ShowWinner />
+
+                <MainLayout>
+                    <Component {...pageProps} />
+                </MainLayout>
             </Provider>
         </CelesteProvider>
     );

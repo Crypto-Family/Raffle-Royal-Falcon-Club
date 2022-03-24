@@ -1,4 +1,5 @@
-import { PROJECT_GET_REQUEST, PROJECT_GET_SUCCESS, PROJECT_GET_FAILURE } from '../constants';
+/* eslint-disable default-param-last */
+import { CURRENT_PROJECT_GET_FAILURE, CURRENT_PROJECT_GET_SUCCESS, CURRENT_PROJECT_GET_REQUEST } from '../constants';
 
 const defaultRequest = {
     loading: false,
@@ -9,36 +10,34 @@ const defaultRequest = {
 };
 
 const defaultState = {
-    projectsHistory: { ...defaultRequest },
     currentProject: { ...defaultRequest },
 };
 
-// eslint-disable-next-line default-param-last
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case PROJECT_GET_REQUEST:
+        case CURRENT_PROJECT_GET_REQUEST:
             return {
                 ...state,
-                [action.payload.requestName]: {
+                currentProject: {
                     ...defaultRequest,
                     loading: true,
                 },
             };
 
-        case PROJECT_GET_SUCCESS:
+        case CURRENT_PROJECT_GET_SUCCESS:
             return {
                 ...state,
-                [action.payload.requestName]: {
+                currentProject: {
                     ...defaultRequest,
                     success: true,
                     data: action.payload.data,
                 },
             };
 
-        case PROJECT_GET_FAILURE:
+        case CURRENT_PROJECT_GET_FAILURE:
             return {
                 ...state,
-                [action.payload.requestName]: {
+                currentProject: {
                     ...defaultRequest,
                     error: true,
                     errorData: action.payload.errorData,

@@ -8,14 +8,15 @@ import mainLogo from 'src/media/logos/royal-falcon.png';
 import placeholder from 'src/media/placeholder/placeholder.png';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import user_get_request_thunk from 'src/redux/actions/userAction';
+import user_get_request_thunk from 'src/redux/actions/navbarAction';
 
 const getAddressReduced = (address) => `${address.slice(0, 5)}...${address.slice(-5)}`;
 
 const Navbar = () => {
     // celeste redux
-    const { walletReducer } = useCelesteSelector((state) => state);
-    const { userReducer } = useSelector((state) => state);
+    const { walletReducer, web3Reducer } = useCelesteSelector((state) => state);
+    const { navbarReducer } = useSelector((state) => state);
+
     const dispatch = useDispatch();
 
     // local state
@@ -28,17 +29,16 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        if (walletReducer.isLoggedIn) {
-            dispatch(
-                user_get_request_thunk({
-                    requestName: 'userPFP',
-                    params: {
-                        userAddress: walletReducer.address,
-                    },
-                })
-            );
-        }
-    }, [dispatch, walletReducer.address, walletReducer.isConnected]);
+        if (!web3Reducer.initialized || walletReducer.address === null) return;
+        dispatch(
+            user_get_request_thunk({
+                requestName: 'userPFP',
+                params: {
+                    userAddress: walletReducer.address,
+                },
+            })
+        );
+    }, [dispatch, walletReducer.address, walletReducer.isConnected, walletReducer.isLoggedIn, web3Reducer.initialized]);
     return (
         <section className="hero has-background-hblack1 ">
             <div className="hero-head">
@@ -75,7 +75,10 @@ const Navbar = () => {
                             disconnectedComponent={
                                 <div className="navbar-item">
                                     <ConnectButton className="button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
-                                        Connect
+                                        <span className="icon is-small">
+                                            <i className="fas fa-plug" />
+                                        </span>
+                                        <span>Connect</span>
                                     </ConnectButton>
                                 </div>
                             }
@@ -84,10 +87,10 @@ const Navbar = () => {
                                 <div className="columns">
                                     <div className="is-flex is-flex-direction-column is-justify-content-center pt-1">
                                         <figure className="image is-32x32">
-                                            {userReducer.userPFP.success ? (
+                                            {navbarReducer.userPFP.success ? (
                                                 <img
                                                     className="is-rounded "
-                                                    src={userReducer.userPFP.data.image}
+                                                    src={navbarReducer.userPFP.data.image}
                                                     alt=""
                                                 />
                                             ) : (
@@ -111,7 +114,10 @@ const Navbar = () => {
 
                                     <div className="navbar-item">
                                         <DisconnectButton className="button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
-                                            Logout
+                                            <span className="icon">
+                                                <i className="fas fa-sign-out-alt" />
+                                            </span>
+                                            <span>Logout</span>
                                         </DisconnectButton>
                                     </div>
                                 </div>
