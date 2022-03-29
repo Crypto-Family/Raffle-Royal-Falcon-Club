@@ -12,6 +12,7 @@ import { store as ReactNotificationsStore } from 'react-notifications-component'
 import { successNotification, errorNotification } from 'src/static/notifications';
 import Loader from 'src/components/loader';
 import getDate from 'src/components/dateFormatter';
+import NoRaffle from '../no-raffle';
 
 const DuringRaffle = () => {
     const { walletReducer, web3Reducer } = useCelesteSelector((state) => state);
@@ -127,10 +128,12 @@ const DuringRaffle = () => {
                 </div>
             </div>
         </section>
-    ) : (
+    ) : currentProjectReducer.currentProject.loading ? (
         <div className="has-background-hblack1" style={{ height: '100vh', width: '100vw' }}>
             <Loader />
         </div>
+    ) : (
+        <NoRaffle />
     );
 };
 

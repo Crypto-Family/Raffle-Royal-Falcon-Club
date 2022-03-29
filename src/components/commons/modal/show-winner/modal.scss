@@ -1,6 +1,6 @@
+@import 'src/scss/vars.scss';
+
 .modal-card {
-    width: 100%;
-    max-width: 500px;
     margin: 0 auto;
     padding: 0;
     border-radius: 30px;
@@ -11,9 +11,18 @@
 }
 
 .modal-content {
+    width: auto;
+    height: auto;
     overflow: hidden;
+    @media (max-width: 768px) {
+        padding-right: 2rem;
+    }
 }
 
 .modal-background {
     background-image: url(../../../../media/animations/confetti.svg);
+}
+
+.bordered-bottom {
+    border-bottom: 5px solid $hwhite1;
 }

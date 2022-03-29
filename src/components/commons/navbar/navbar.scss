@@ -59,16 +59,70 @@
         display: none;
     }
     border: 1px solid $hgold1;
-    border-radius: 15px;
+    border-radius: 10px;
     //reduce the size of the burger
 
-    width: 56px;
-    height: 56px;
-
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 3;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .navbar {
     border-bottom: 1px solid $hwhite1;
+}
+
+.reduced-size-for-mobile {
+    @media (max-width: 450px) {
+        font-size: 0.6rem !important;
+    }
+}
+
+.reduced-image-size-mobile {
+    @media (max-width: 450px) {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+.navbar-button {
+    @media (max-width: 450px) {
+        font-size: 0.5rem !important;
+    }
+}
+
+.navbar-menu {
+    @media screen and (max-width: 1024px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 2;
+        width: 100vw;
+        height: 100vh;
+
+        .navbar-item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            & a {
+                padding: 1rem;
+            }
+        }
+    }
 }

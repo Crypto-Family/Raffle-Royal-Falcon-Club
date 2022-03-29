@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
+
 import { useDispatch, useSelector } from 'react-redux';
 
-import { close_modal } from 'src/redux/actions/modalAction';
+import { start_close_modal } from 'src/redux/actions/modalAction';
 import Modal from '../index';
 
 const ShowWinner = () => {
@@ -11,7 +14,7 @@ const ShowWinner = () => {
     const dispatch = useDispatch();
 
     const closeModal = () => {
-        dispatch(close_modal({ modalName: 'showWinnerModal' }));
+        dispatch(start_close_modal());
     };
 
     return (
@@ -22,23 +25,28 @@ const ShowWinner = () => {
                         <div className="columns is-centered">
                             <div className="column is-narrow">
                                 <div className="content has-text-centered">
-                                    <div className="columns is-centered">
+                                    <div className="columns is-centered bordered-bottom">
                                         <div className="column is-narrow">
                                             <figure className="image pb-2">
-                                                <img
-                                                    src="https://bulma.io/images/placeholders/128x128.png"
-                                                    className="image is-rounded"
-                                                />
+                                                <img src={data && data.image} className="image is-rounded" />
                                             </figure>
                                         </div>
                                     </div>
                                     <div className="columns is-centered">
                                         <div className="column is-narrow">
-                                            <h1 className="title is-1">Congratulations!</h1>
-                                            <h2 className="subtitle is-3 pt-5">0x124513asdnjo214jorqwo132</h2>
+                                            <h1 className="title is-2 has-font-playfairDisplay has-text-hgold1">
+                                                Congratulations !
+                                            </h1>
+                                            <p className="subtitle is-5 pt-5 has-text-hwhite1 has-font-bioRhyme ">
+                                                {data && data.address}
+                                            </p>
                                         </div>
                                     </div>
-                                    <button className="button is-rounded " onClick={closeModal} type="button">
+                                    <button
+                                        className="button is-rounded has-font-bioRhyme has-background-hgold1 is-borderless"
+                                        onClick={closeModal}
+                                        type="button"
+                                    >
                                         Hide Winner
                                     </button>
                                 </div>

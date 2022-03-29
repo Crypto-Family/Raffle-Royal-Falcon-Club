@@ -2,7 +2,7 @@ import HistoryTable from 'src/components/tables/history-table';
 
 const History = () => {
     return (
-        <section className="hero has-background-hblack1 has-font-bioRhyme">
+        <section className="hero has-background-hblack1 has-font-bioRhyme " style={{ height: '100vh' }}>
             <div className="hero-body">
                 <div className="container">
                     <div className="columns is-centered">

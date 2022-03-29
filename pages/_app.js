@@ -9,6 +9,7 @@ import store from 'src/redux/store';
 import ReactNotification from 'react-notifications-component';
 import { custom_notification_types } from 'src/static/notifications';
 
+import 'animate.css';
 import 'src/scss/main.scss';
 import 'src/components/commons/navbar/navbar.scss';
 import 'src/components/tables/table.scss';

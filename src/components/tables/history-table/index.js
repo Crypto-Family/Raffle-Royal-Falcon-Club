@@ -1,13 +1,17 @@
+/* eslint-disable no-nested-ternary */
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import projects_history_get_request_thunk from 'src/redux/actions/projectsHistoryAction';
 import Loader from 'src/components/loader';
 import getDate from 'src/components/dateFormatter';
+import { open_modal } from 'src/redux/actions/modalAction';
+import NoRaffle from 'pages/current-raffle/no-raffle';
 
 const getAddressReduced = (address) => `${address.slice(0, 5)}...${address.slice(-5)}`;
 
 const HistoryTable = () => {
     const { projectsHistoryReducer } = useSelector((state) => state);
+    // console.log('🚀 ~ file: index.js ~ line 12 ~ HistoryTable ~ projectsHistoryReducer', projectsHistoryReducer);
 
     const dispatch = useDispatch();
     const [currentSelected, setCurrentSelected] = useState(0);
@@ -28,6 +32,11 @@ const HistoryTable = () => {
             })
         );
     }, [dispatch]);
+
+    const objectToArray = (obj) => {
+        Object.Entries = () => Object.keys(obj).map((key) => [key, obj[key]]);
+        return Object.Entries(obj);
+    };
 
     return projectsHistoryReducer.projectsHistory.success ? (
         <>
@@ -114,31 +123,53 @@ const HistoryTable = () => {
                     </tr>
                 </thead>
                 <tbody className="table is-bordered">
-                    {projectsHistoryReducer.projectsHistory.success &&
-                    projectsHistoryReducer.projectsHistory.data[userChoice]
-                        ? splitEvery(projectsHistoryReducer.projectsHistory.data, 7).map((row, i) => (
-                              <tr key={i}>
-                                  {row.map((user, j) => {
-                                      return (
-                                          <td className="has-text-centered" key={j}>
-                                              <figure className="image is-flex is-justify-content-center pb-2">
-                                                  <img src={user.image[j]} className="image is-32x32 is-rounded" />
-                                              </figure>
-                                              <p className="has-text-weight-normal has-text-hwhite1 has-font-bioRhyme">
-                                                  {getAddressReduced(user.address[j] || '')}
-                                              </p>
-                                          </td>
-                                      );
-                                  })}
-                              </tr>
-                          ))
-                        : null}
+                    {splitEvery(projectsHistoryReducer.projectsHistory.data, 7).map((row, i) => (
+                        <tr key={i}>
+                            {row.map((user, j) => {
+                                console.log(
+                                    '🚀 ~ file: index.js ~ line 128 ~ HistoryTable ~ projectsHistoryReducer.projectsHistory.data',
+                                    objectToArray(projectsHistoryReducer.projectsHistory.data[1])
+                                );
+                                return (
+                                    <td
+                                        className="has-text-centered"
+                                        key={j}
+                                        onClick={() =>
+                                            dispatch(
+                                                open_modal({
+                                                    modalName: 'showWinnerModal',
+                                                    modalData: {
+                                                        image: user.image,
+                                                        address: user.address,
+                                                    },
+                                                })
+                                            )
+                                        }
+                                    >
+                                        <figure className="image is-flex is-justify-content-center pb-2">
+                                            <img src={user.image[j]} className="image is-32x32 is-rounded" />
+                                        </figure>
+                                        <p className="has-text-weight-normal has-text-hwhite1 has-font-bioRhyme">
+                                            {getAddressReduced(user.address[j] || '')}
+                                        </p>
+                                    </td>
+                                );
+                            })}
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
-    ) : (
-        <div className="has-background-hblack1" style={{ height: '100vh', width: '100vw' }}>
+    ) : projectsHistoryReducer.projectsHistory.loading ? (
+        <div className="has-background-hblack1">
             <Loader />
+        </div>
+    ) : (
+        // display a sorry message that no raffles have been created yet
+        <div className="has-background-hblack1">
+            <p className="has-text-centered has-text-hwhite1 has-font-bioRhyme is-size-4 pt-6">
+                Sorry, no raffles have been created yet.
+            </p>
         </div>
     );
 };

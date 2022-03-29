@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react';
@@ -43,14 +44,14 @@ const Navbar = () => {
         <section className="hero has-background-hblack1 ">
             <div className="hero-head">
                 <div className="navbar columns is-mobile is-marginless">
-                    <div className="column left">
+                    <div className="column left ">
                         <Link href="/" passHref>
                             <a>
                                 <Image src={mainLogo} alt="Royal Falcon Logo" width={55} height={55} />
                             </a>
                         </Link>
                         <p className="navbar-item has-font-goblinOne has-text-hwhite1 is-size-6 desktop">
-                            Royal Raffle Falcon Club
+                            Raffle Royal Falcon Club
                         </p>
                     </div>
 
@@ -74,7 +75,7 @@ const Navbar = () => {
                         <ConnectedWrapper
                             disconnectedComponent={
                                 <div className="navbar-item">
-                                    <ConnectButton className="button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
+                                    <ConnectButton className="navbar-button button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
                                         <span className="icon is-small">
                                             <i className="fas fa-plug" />
                                         </span>
@@ -83,15 +84,15 @@ const Navbar = () => {
                                 </div>
                             }
                         >
-                            <div className="navbar-item has-font-bioRhyme has-text-hwhite1 ">
-                                <div className="columns">
+                            <div className="navbar-item has-font-bioRhyme has-text-hwhite1 right">
+                                <div className="columns right">
                                     <div className="is-flex is-flex-direction-column is-justify-content-center pt-1">
-                                        <figure className="image is-32x32">
+                                        <figure className="image is-32x32 reduced-image-size-mobile">
                                             {navbarReducer.userPFP.success ? (
                                                 <img
                                                     className="is-rounded "
                                                     src={navbarReducer.userPFP.data.image}
-                                                    alt=""
+                                                    alt="NFT Profile"
                                                 />
                                             ) : (
                                                 <Image
@@ -104,7 +105,7 @@ const Navbar = () => {
                                             )}
                                         </figure>
                                     </div>
-                                    <div className="column is-size-6 ">
+                                    <div className="column is-size-6 reduced-size-for-mobile">
                                         Connected as
                                         <br />
                                         <p className="has-text-hgold1">
@@ -113,7 +114,7 @@ const Navbar = () => {
                                     </div>
 
                                     <div className="navbar-item">
-                                        <DisconnectButton className="button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
+                                        <DisconnectButton className="navbar-button button is-rounded has-background-hgold1 has-font-bioRhyme is-borderless">
                                             <span className="icon">
                                                 <i className="fas fa-sign-out-alt" />
                                             </span>

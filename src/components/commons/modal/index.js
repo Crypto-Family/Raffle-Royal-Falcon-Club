@@ -33,7 +33,7 @@ const Modal = (props) => {
     const dispatch = useDispatch();
 
     const closeAfterAnimation = async (_currentModal) => {
-        await animateCSS('#____modal', 'fadeOutDown');
+        await animateCSS('#____modal', 'bounceOutUp');
         dispatch(close_modal({ modalName: _currentModal }));
     };
 
@@ -73,7 +73,7 @@ const Modal = (props) => {
                 className="modal-background has-background-hblack2-o-2 has-bg-blur-2"
                 onClick={() => dispatch(start_close_modal())}
             />
-            <div id="____modal" className="modal-content px-4 animate__faster animate__animated animate__fadeInDown">
+            <div id="____modal" className="modal-content px-4 animate__faster animate__animated animate__bounceIn">
                 {children}
             </div>
         </div>
